@@ -111,7 +111,7 @@ def unfollow_dispatch(sender, instance, **kwargs):
     try:
         user = instance.user
     except User.DoesNotExist:
-        user = None
+        user = instance.user_id
     
     unfollowed.send(instance.target.__class__, user=user, target=instance.target, instance=instance)
     
